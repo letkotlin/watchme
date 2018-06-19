@@ -1,13 +1,22 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.fabric'
+
+ext {
+    supportLibVersion = "26.0.2"
+    retrofitVersion = "2.2.0"
+    okHttpVersion = '3.5.0'
+    daggerVersion = "2.13"
+    rxjava = "2.1.7"
+    rxjavaAndroid = "2.0.1"
+}
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "gasgasstation.com.watchme"
+        applicationId "com.watchme"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -20,14 +29,49 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    kapt {
+        generateStubs = true
+    }
+    compileOptions.incremental = false
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-annotations-jvm:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:design:28.0.0-alpha3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Dagger 2.0
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+
+    // retrofit
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:$okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+
+    // rxjava
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxjavaAndroid"
+
+    // 권한요청 tedPermission
+    implementation 'gun0912.ted:tedpermission-rx2:2.1.0'
+
+//    implementation "com.google.firebase:firebase-ads:16.0.1"
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
+        transitive = true;
+    }
 }
+
+apply plugin: 'com.google.gms.google-services'
