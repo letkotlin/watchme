@@ -24,7 +24,13 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            debuggable true
+            resValue "string", "KAKAO_API_KEY", "\"${rootProject.getProperties().get("kakao.apikey")}\""
+        }
+
         release {
+            resValue "string", "KAKAO_API_KEY", "\"${rootProject.getProperties().get("kakao.apikey")}\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -72,6 +78,8 @@ dependencies {
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
         transitive = true;
     }
+
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.11.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
