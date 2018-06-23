@@ -3,7 +3,10 @@ package com.watchme
 import android.app.Application
 import android.util.Log
 import com.kakao.auth.KakaoSDK
+import com.watchme.dagger.SettingModule
 import com.watchme.kakao.KakaoSDKAdapter
+import dagger.Component
+import javax.inject.Singleton
 
 class App : Application() {
 
@@ -19,4 +22,10 @@ class App : Application() {
         KakaoSDK.init(KakaoSDKAdapter())
     }
 
+}
+
+@Component(modules = arrayOf(SettingModule::class))
+@Singleton
+interface AppComponent {
+    fun inject(app: App)
 }
