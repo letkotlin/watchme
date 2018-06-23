@@ -76,6 +76,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-database:16.0.1'
 
+    // 권한요청 tedPermission
+    implementation 'gun0912.ted:tedpermission-rx2:2.2.0'
+
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
         transitive = true
     }

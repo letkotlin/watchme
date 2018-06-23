@@ -2,6 +2,8 @@
     <string name="app_name">와치와치미</string>
     <string name="update">업데이트</string>
     <string name="close">닫기</string>
+    <string name="auth_rationale_msg">와치와치미를 이용하시려면 위치 권한을 허용해주세요.</string>
+    <string name="auth_denied_msg">회원가입을 위해 주소록 권한이 필수로 필요합니다.</string>
     <string name="alert_new_version">새로운 버전이 등록되었습니다.\n지금 바로 업데이트해주세요!</string>
     <string name="alert_empty_market_message">마켓이 설치되지 않았습니다.</string>
     <string name="alert_fail_connect_market">마켓 연결에 실패하였습니다.\n잠시 후 다시 시도해주세요.</string>

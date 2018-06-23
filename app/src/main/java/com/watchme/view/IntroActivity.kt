@@ -94,15 +94,15 @@ class IntroActivity : BaseActivity() {
             AlertDialog.Builder(this)
                     .setMessage(R.string.alert_new_version)
                     .setCancelable(false)
-                    .setPositiveButton(R.string.update, { dialog, _ ->
+                    .setPositiveButton(R.string.update) { dialog, _ ->
                         dialog.dismiss()
                         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)))
                         finish()
-                    })
-                    .setNegativeButton(R.string.close, { dialog, _ ->
+                    }
+                    .setNegativeButton(R.string.close) { dialog, _ ->
                         dialog.dismiss()
                         finish()
-                    }).show()
+                    }.show()
 
         } catch (e: ActivityNotFoundException) {
             Toast.makeText(this, R.string.alert_empty_market_message, Toast.LENGTH_SHORT).show()
